@@ -1,19 +1,53 @@
-[![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/FallenStar.bg3tagsinfos.svg)](https://marketplace.visualstudio.com/items?itemName=FallenStar.bg3tagsinfos)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/FallenStar08/BG3-ShowTagsInfos/blob/main/LICENSE)
+[![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/FallenStar.bg3guidinfos.svg)](https://marketplace.visualstudio.com/items?itemName=FallenStar.bg3guidinfos)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/FallenStar08/BG3-GUIDinfos/blob/main/LICENSE)
 
 ## Overview
 
-Provides information about hovered tag GUIDs. It identifies GUIDs in your code and displays their associated name and description using data from a provided JSON file.
+Provides information about hovered GUIDs. It identifies GUIDs in your code and displays their associated name and description (and potentially more) using data from a provided JSON file.
 
 ## Features
 
-- **Hover Information:** Hover over a GUID in your code to see detailed information about the associated tag.
+- **Hover Information:** Hover over a GUID in your code to see detailed information about it.
+- **Supported Data Types:**
+  - "ActionResource"  
+  - "ActionResourceGroup"  
+  - "Background"  
+  - "CharacterCreationAccessorySet"  
+  - "CharacterCreationAppearanceMaterial"  
+  - "CharacterCreationAppearanceVisual"  
+  - "CharacterCreationEquipmentIcons"  
+  - "CharacterCreationEyeColor"  
+  - "CharacterCreationHairColor"  
+  - "CharacterCreationIconSettings"  
+  - "CharacterCreationMaterialOverride"  
+  - "CharacterCreationPassiveAppearance"  
+  - "CharacterCreationPreset"  
+  - "CharacterCreationSharedVisual"  
+  - "CharacterCreationSkinColor"  
+  - "ClassDescription"  
+  - "ColorDefinition"  
+  - "EquipmentType"  
+  - "Faction"  
+  - "Feat"  
+  - "FeatDescription"  
+  - "God"  
+  - "Gossip"  
+  - "LevelMap"  
+  - "Origin"  
+  - "PassiveList"  
+  - "Progression"  
+  - "ProgressionDescription"  
+  - "Race"  
+  - "SkillList"  
+  - "SpellList"  
+  - "Tag"  
+  - "Flag"
 
 ## Installation
 
 1. Open Visual Studio Code.
 2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or use the keyboard shortcut `Ctrl+Shift+X`.
-3. Search for "BG3-TagsInfos".
+3. Search for "BG3-GUIDinfos".
 4. Click the "Install" button.
 
 ## Usage
@@ -28,7 +62,7 @@ Provides information about hovered tag GUIDs. It identifies GUIDs in your code a
 
 ## Contributing
 
-Contributions are welcome! If you encounter any issues or have suggestions, please feel free to [create an issue](https://github.com/FallenStar08/BG3-ShowTagsInfos/issues) or submit a pull request.
+Contributions are welcome! If you encounter any issues or have suggestions, please feel free to [create an issue](https://github.com/FallenStar08/BG3-GUIDinfos/issues) or submit a pull request.
 
 ## License
 
