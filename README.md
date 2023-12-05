@@ -1,7 +1,7 @@
 # <BG3-TagsInfos>
 
 [![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/your-extension-publisher.your-extension-name.svg)](https://marketplace.visualstudio.com/items?itemName=your-extension-publisher.your-extension-name)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/your-github-username/your-extension-repo/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/FallenStar08/BG3-ShowTagsInfos/blob/main/LICENSE)
 
 ## Overview
 
@@ -30,7 +30,7 @@ Provides information about hovered tag GUIDs. It identifies GUIDs in your code a
 
 ## Contributing
 
-Contributions are welcome! If you encounter any issues or have suggestions, please feel free to [create an issue](https://github.com/your-github-username/your-extension-repo/issues) or submit a pull request.
+Contributions are welcome! If you encounter any issues or have suggestions, please feel free to [create an issue](https://github.com/FallenStar08/BG3-ShowTagsInfos/issues) or submit a pull request.
 
 ## License
 
