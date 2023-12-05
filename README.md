@@ -20,17 +20,9 @@ Provides information about hovered tag GUIDs. It identifies GUIDs in your code a
 
 ## Usage
 
-1. Open a file in Visual Studio Code containing tag GUIDs.
+1. Open a file in Visual Studio Code containing tag GUIDs, supported filetypes are json,lsx,xml.
 2. Hover over a tag GUID in the code.
 3. The extension will display information about the tag, including its name and description.
-
-## Configuration
-
-No additional configuration is required for this extension.
-
-## Extension Settings
-
-There are no customizable settings for this extension.
 
 ## Known Issues
 
