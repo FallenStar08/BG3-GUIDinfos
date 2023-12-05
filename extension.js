@@ -57,7 +57,7 @@ function lookupTagInfoForGUID(guid) {
             if (tagsData.hasOwnProperty(tagName)) {
                 const tagInfo = tagsData[tagName];
                 if (tagInfo.UUID === guid) {
-                    // Return the tag information corresponding to the GUID
+                    // Return the tag information corresponding to the GUID...
                     return {
                         Name: tagName,
                         Description: tagInfo.Description
