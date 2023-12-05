@@ -22,16 +22,19 @@ function activate(context) {
                 //console.log('Hovered GUID:', guid);  // Log the GUID
 
                 if (guid) {
-                    const tagInfo = lookupTagInfoForGUID(guid);
+                    const infoResult  = lookupInfoForGUID(guid);
                     //console.log('Tag Info for GUID:', tagInfo);  // Log the tag info
 
-                    if (tagInfo) {
-                        const name = tagInfo.Name;
-                        const description = tagInfo.Description;
+                    if (infoResult && infoResult.Info) {
+                        const info = infoResult.Info;
 
-                        let hoverText = `**Name :** ${name}`;
-                        if (description) {
-                            hoverText += `\n\n**Description:** ${description}`;
+                        const preferredOrder = ['Name', 'LocalizedName', 'Description', 'SlotName', 'Type'];
+
+                        let hoverText = '';
+                        for (const field of preferredOrder) {
+                            if (info.hasOwnProperty(field)) {
+                                hoverText += `**${field} :** ${info[field]}\n\n`;
+                            }
                         }
 
                         return new vscode.Hover(hoverText);
@@ -46,24 +49,20 @@ function activate(context) {
     context.subscriptions.push(hoverProvider);
 }
 
-function lookupTagInfoForGUID(guid) {
-    const tagsFilePath = path.join(__dirname, 'AllTags.json');
+function lookupInfoForGUID(guid) {
+    const FilePath = path.join(__dirname, 'AllDump.json');
 
     try {
-        const tagsData = JSON.parse(fs.readFileSync(tagsFilePath, 'utf8'));
+        const Data = JSON.parse(fs.readFileSync(FilePath, 'utf8'));
 
         // Search for the GUID in the tags data...
-        for (const tagName in tagsData) {
-            if (tagsData.hasOwnProperty(tagName)) {
-                const tagInfo = tagsData[tagName];
-                if (tagInfo.UUID === guid) {
-                    // Return the tag information corresponding to the GUID...
-                    return {
-                        Name: tagName,
-                        Description: tagInfo.Description
-                    };
-                }
-            }
+        if (Data.hasOwnProperty(guid)) {
+            const Info = Data[guid];
+            
+            // Return the tag information corresponding to the GUID
+            return {
+                Info
+            };
         }
 
         return null;
