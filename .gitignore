@@ -5,6 +5,7 @@ node_modules/
 .vscode/
 *.code-workspace
 .history/
-
+# Ignore the specific .gitignore file
+.gitignore
 # Ignore Visual Studio Code extension package file
 *.vsix
