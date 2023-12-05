@@ -50,6 +50,8 @@ Provides information about hovered GUIDs. It identifies GUIDs in your code and d
 3. Search for "BG3-GUIDinfos".
 4. Click the "Install" button.
 
+[MarketPlace Link](https://marketplace.visualstudio.com/items?itemName=FallenStar.bg3guidinfos)
+
 ## Usage
 
 1. Open a file in Visual Studio Code containing tag GUIDs, supported filetypes are json,lsx,xml.
