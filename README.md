@@ -1,5 +1,3 @@
-# <BG3-TagsInfos>
-
 [![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/FallenStar.bg3tagsinfos.svg)](https://marketplace.visualstudio.com/items?itemName=FallenStar.bg3tagsinfos)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/FallenStar08/BG3-ShowTagsInfos/blob/main/LICENSE)
 
@@ -15,7 +13,7 @@ Provides information about hovered tag GUIDs. It identifies GUIDs in your code a
 
 1. Open Visual Studio Code.
 2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or use the keyboard shortcut `Ctrl+Shift+X`.
-3. Search for "<BG3-TagsInfos>".
+3. Search for "BG3-TagsInfos".
 4. Click the "Install" button.
 
 ## Usage
