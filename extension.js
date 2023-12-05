@@ -19,15 +19,15 @@ function activate(context) {
             if (guidMatch) {
                 const guid = guidMatch[0];
 
-                //console.log('Hovered GUID:', guid);  // Log the GUID
+                //console.log('Hovered GUID:', guid);  // Log GUID
 
                 if (guid) {
                     const infoResult  = lookupInfoForGUID(guid);
-                    //console.log('Tag Info for GUID:', tagInfo);  // Log the tag info
+                    //console.log('Tag Info for GUID:', tagInfo);  // Log info
 
                     if (infoResult && infoResult.Info) {
                         const info = infoResult.Info;
-
+                        //stupid shit but good enough for now
                         const preferredOrder = ['Name', 'LocalizedName', 'Description', 'SlotName', 'Type'];
 
                         let hoverText = '';
@@ -49,23 +49,32 @@ function activate(context) {
     context.subscriptions.push(hoverProvider);
 }
 
+
+
+/**
+ * Looks up information for a given GUID.
+ *
+ * @param {string} guid - The GUID to look up information for.
+ * @returns {Object|null} Returns an object containing information for the given GUID, or null if the GUID is not found or an error occurs.
+ * @throws {Error} Throws an error if there is an issue reading the data file.
+ */
 function lookupInfoForGUID(guid) {
     const FilePath = path.join(__dirname, 'AllDump.json');
 
     try {
         const Data = JSON.parse(fs.readFileSync(FilePath, 'utf8'));
 
-        // Search for the GUID in the tags data...
+        // Search for the GUID in the data...
         if (Data.hasOwnProperty(guid)) {
             const Info = Data[guid];
             
-            // Return the tag information corresponding to the GUID
+            // Return information corresponding to the GUID
             return {
                 Info
             };
         }
-
         return null;
+        //pretend it's complex enough to have errors to catch
     } catch (error) {
         console.error('Error reading tags file:', error);
         return null;
