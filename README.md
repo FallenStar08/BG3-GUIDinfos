@@ -1,6 +1,6 @@
 # <BG3-TagsInfos>
 
-[![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/your-extension-publisher.your-extension-name.svg)](https://marketplace.visualstudio.com/items?itemName=your-extension-publisher.your-extension-name)
+[![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/FallenStar.bg3tagsinfos.svg)](https://marketplace.visualstudio.com/items?itemName=FallenStar.bg3tagsinfos)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/FallenStar08/BG3-ShowTagsInfos/blob/main/LICENSE)
 
 ## Overview
