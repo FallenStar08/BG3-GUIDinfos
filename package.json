@@ -1,0 +1,38 @@
+{
+  "name": "bg3tagsinfos",
+  "displayName": "BG3-TagsInfos",
+  "description": "see detailed information about a tag guid on hover, including its name and description.",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.84.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:json",
+    "onLanguage:xml",
+    "onLanguage:lsx"
+],
+  "main": "./extension.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.84.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8"
+  },
+  "languages": [
+    {
+        "id": "lsx",
+        "extensions": [".lsx"]
+    }
+]
+}
