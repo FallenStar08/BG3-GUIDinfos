@@ -5,3 +5,6 @@ node_modules/
 .vscode/
 *.code-workspace
 .history/
+
+# Ignore Visual Studio Code extension package file
+*.vsix
