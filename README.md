@@ -1,4 +1,4 @@
-# <Your Extension Name>
+# <BG3-TagsInfos>
 
 [![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/your-extension-publisher.your-extension-name.svg)](https://marketplace.visualstudio.com/items?itemName=your-extension-publisher.your-extension-name)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/your-github-username/your-extension-repo/blob/main/LICENSE)
@@ -15,7 +15,7 @@ Provides information about hovered tag GUIDs. It identifies GUIDs in your code a
 
 1. Open Visual Studio Code.
 2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or use the keyboard shortcut `Ctrl+Shift+X`.
-3. Search for "<Your Extension Name>".
+3. Search for "<BG3-TagsInfos>".
 4. Click the "Install" button.
 
 ## Usage
@@ -46,14 +46,5 @@ This extension is [MIT licensed](LICENSE).
 
 ## Contact
 
-For questions or feedback, you can reach out to the author, FallenStar, on [GitHub](https://github.com/FallenStar).
-
-## Release Notes
-
-- Version X.X.X: Initial release.
-- See [CHANGELOG.md](CHANGELOG.md) for detailed release notes.
-
-## Acknowledgments
-
-Special thanks to [Visual Studio Code](https://code.visualstudio.com/) and the open-source community for their support.
+For questions or feedback, you can reach out to the author, FallenStar, on [GitHub](https://github.com/FallenStar08).
 
