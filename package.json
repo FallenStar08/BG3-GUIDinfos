@@ -8,7 +8,7 @@
     "type": "git",
     "url": "https://github.com/FallenStar08/BG3-GUIDinfos"
   },
-  "version": "1.1.0",
+  "version": "1.1.1",
   "engines": {
     "vscode": "^1.84.0"
   },
