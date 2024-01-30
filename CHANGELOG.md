@@ -10,3 +10,7 @@
 ## [1.1.1] - 2024-01-30
 
 - Added Images & Icon
+
+## [1.1.2] - 2024-01-30
+
+- Fixed missing translated strings
