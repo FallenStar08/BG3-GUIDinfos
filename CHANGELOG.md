@@ -14,3 +14,4 @@
 ## [1.1.2] - 2024-01-30
 
 - Fixed missing translated strings
+- Removed empty field from json field to save some space
