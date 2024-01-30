@@ -3,6 +3,7 @@
   "displayName": "BG3-GUIDinfos",
   "description": "see detailed information about a tag guid on hover, including its name and description.",
   "publisher": "FallenStar",
+  "icon" : "icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/FallenStar08/BG3-GUIDinfos"
