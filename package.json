@@ -1,7 +1,7 @@
 {
   "name": "bg3guidinfos",
   "displayName": "BG3-GUIDinfos",
-  "description": "see detailed information about a tag guid on hover, including its name and description.",
+  "description": "Provides information about hovered GUIDs.",
   "publisher": "FallenStar",
   "icon" : "icon.png",
   "repository": {
