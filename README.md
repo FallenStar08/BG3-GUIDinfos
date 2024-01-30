@@ -5,10 +5,14 @@
 
 Provides information about hovered GUIDs. It identifies GUIDs in your code and displays their associated name and description (and potentially more) using data from a provided JSON file.
 
+GUIDs with available infos will be underlined.
+
 ## Features
 
 - **Hover Information:** Hover over a GUID in your code to see detailed information about it.
 - **Supported Data Types:**
+  - Most Resources (textures, animations etc, mostly path info)
+  - "Root Templates"
   - "ActionResource"  
   - "ActionResourceGroup"  
   - "Background"  

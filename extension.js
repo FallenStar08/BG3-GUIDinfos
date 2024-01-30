@@ -2,14 +2,18 @@ const vscode = require('vscode');
 const path = require('path');
 const fs = require('fs');
 
+let index = {}; // Index for quick lookups
+let decorationType; // Decoration type for displaying information
 
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-    // it's a thingy that does things on hover, yes. We register it.
+    loadIndex(); // Load index when the extension is activated
+
+    // Register hover provider
     let hoverProvider = vscode.languages.registerHoverProvider('*', {
-        provideHover(document, position, token) {
+        provideHover(document, position) {
             // Get the entire line at the current position
             const line = document.lineAt(position.line).text;
 
@@ -19,24 +23,26 @@ function activate(context) {
             if (guidMatch) {
                 const guid = guidMatch[0];
 
-                //console.log('Hovered GUID:', guid);  // Log GUID
-
                 if (guid) {
-                    const infoResult  = lookupInfoForGUID(guid);
-                    //console.log('Tag Info for GUID:', tagInfo);  // Log info
+                    const info = index[guid];
 
-                    if (infoResult && infoResult.Info) {
-                        const info = infoResult.Info;
-                        //stupid shit but good enough for now
-                        const preferredOrder = ['Name', 'LocalizedName', 'Description', 'SlotName', 'Type'];
+                    if (info) {
+                        const preferredOrder = ['Name', 'LocalizedName', 'Description', 'TechnicalDescription', 'SlotName', 'Type', 'ResourceType'];
 
                         let hoverText = '';
+                        // Add fields in preferred order
                         for (const field of preferredOrder) {
-                            if (info.hasOwnProperty(field)) {
+                            if (info.hasOwnProperty(field) && info[field] !== "") {
                                 hoverText += `**${field} :** ${info[field]}\n\n`;
                             }
                         }
 
+                        // Add any remaining fields not in the preferred order
+                        for (const field in info) {
+                            if (!preferredOrder.includes(field) && info.hasOwnProperty(field) && info[field] !== "") {
+                                hoverText += `**${field} :** ${info[field]}\n\n`;
+                            }
+                        }
                         return new vscode.Hover(hoverText);
                     }
                 }
@@ -46,43 +52,75 @@ function activate(context) {
         }
     });
 
+    // Create decoration type
+    decorationType = vscode.window.createTextEditorDecorationType({
+        textDecoration: 'underline',
+    });
+
+    // Register an event listener for when the active text editor changes
+    vscode.window.onDidChangeActiveTextEditor(editor => {
+        if (editor) {
+            updateDecorations(editor);
+        }
+    });
+
+    // Initially update decorations when the extension is activated
+    const editor = vscode.window.activeTextEditor;
+    if (editor) {
+        updateDecorations(editor);
+    }
+
+    // Add subscriptions to context
     context.subscriptions.push(hoverProvider);
 }
 
-
-
 /**
- * Looks up information for a given GUID.
- *
- * @param {string} guid - The GUID to look up information for.
- * @returns {Object|null} Returns an object containing information for the given GUID, or null if the GUID is not found or an error occurs.
- * @throws {Error} Throws an error if there is an issue reading the data file.
+ * Loads the index from the JSON file.
  */
-function lookupInfoForGUID(guid) {
-    const FilePath = path.join(__dirname, 'AllDump.json');
+function loadIndex() {
+    const filePath = path.join(__dirname, 'SD_DUMP.json');
 
     try {
-        const Data = JSON.parse(fs.readFileSync(FilePath, 'utf8'));
-
-        // Search for the GUID in the data...
-        if (Data.hasOwnProperty(guid)) {
-            const Info = Data[guid];
-            
-            // Return information corresponding to the GUID
-            return {
-                Info
-            };
-        }
-        return null;
-        //pretend it's complex enough to have errors to catch
+        const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        index = data;
     } catch (error) {
-        console.error('Error reading tags file:', error);
-        return null;
+        console.error('Error reading data file:', error);
     }
 }
 
+/**
+ * Update decorations for the active text editor.
+ * @param {vscode.TextEditor} editor The active text editor.
+ */
+function updateDecorations(editor) {
+    const decorations = [];
+    const document = editor.document;
+
+    for (let lineIndex = 0; lineIndex < document.lineCount; lineIndex++) {
+        const line = document.lineAt(lineIndex);
+        const guidMatches = line.text.matchAll(/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/g);
+
+        if (guidMatches) {
+            for (const match of guidMatches) {
+                const guid = match[0];
+                if (guid && index[guid]) {
+                    // Add decoration for matched GUID text
+                    const startIndex = match.index;
+                    const endIndex = startIndex + guid.length;
+                    decorations.push({
+                        range: new vscode.Range(lineIndex, startIndex, lineIndex, endIndex),
+                    });
+                }
+            }
+        }
+    }
+
+    // Set decorations for the active editor
+    editor.setDecorations(decorationType, decorations);
+}
+
 // Idk wtf this is but guide had it
-function deactivate() {}
+function deactivate() { }
 
 module.exports = {
     activate,
