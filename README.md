@@ -9,7 +9,7 @@ GUIDs with available infos will be underlined.
 
 ![image1](https://i.imgur.com/wpXiAtK.png)
 
-![image2](https://i.imgur.com/JMQcsSQ.png)
+![image2](https://i.imgur.com/9xPMcxR.png)
 
 
 
