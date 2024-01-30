@@ -7,9 +7,9 @@ Provides information about hovered GUIDs. It identifies GUIDs in your code and d
 
 GUIDs with available infos will be underlined.
 
-![alt text](https://i.imgur.com/wpXiAtK.png)
+![image1](https://i.imgur.com/wpXiAtK.png)
 
-![alt text](https://i.imgur.com/JMQcsSQ.png)
+![image2](https://i.imgur.com/JMQcsSQ.png)
 
 
 
