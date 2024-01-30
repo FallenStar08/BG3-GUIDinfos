@@ -13,3 +13,4 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Added Resources
 - Added RootTemplates
 - GUIDs with available infos are now underlined
+- Made code betterer
