@@ -7,6 +7,12 @@ Provides information about hovered GUIDs. It identifies GUIDs in your code and d
 
 GUIDs with available infos will be underlined.
 
+![alt text](https://i.imgur.com/wpXiAtK.png)
+
+![alt text](https://i.imgur.com/JMQcsSQ.png)
+
+
+
 ## Features
 
 - **Hover Information:** Hover over a GUID in your code to see detailed information about it.
