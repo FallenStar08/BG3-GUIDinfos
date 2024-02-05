@@ -15,3 +15,8 @@
 
 - Fixed missing translated strings
 - Removed empty field from json field to save some space
+
+## [1.1.3] - 2024-02-06
+
+- Now updates decorations as the document changes (not sure how bad it is for performance but it looks fine)
+- Reduced hover size to the GUID and not the whole line
