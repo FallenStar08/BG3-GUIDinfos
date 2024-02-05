@@ -9,7 +9,7 @@ let decorationType; // Decoration type for displaying information
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-    loadIndex(); // Load index when the extension is activated
+    loadIndex(); // Load index when the extension is activated (so we only read the json once...)
 
     // Register hover provider
     let hoverProvider = vscode.languages.registerHoverProvider('*', {
@@ -30,20 +30,26 @@ function activate(context) {
                         const preferredOrder = ['Name', 'LocalizedName', 'Description', 'TechnicalDescription', 'SlotName', 'Type', 'ResourceType'];
 
                         let hoverText = '';
-                        // Add fields in preferred order
+                        // Add fields in preferred order...
                         for (const field of preferredOrder) {
                             if (info.hasOwnProperty(field) && info[field] !== "") {
                                 hoverText += `**${field} :** ${info[field]}\n\n`;
                             }
                         }
 
-                        // Add any remaining fields not in the preferred order
+                        // Add any remaining fields not in the preferred order...
                         for (const field in info) {
                             if (!preferredOrder.includes(field) && info.hasOwnProperty(field) && info[field] !== "") {
                                 hoverText += `**${field} :** ${info[field]}\n\n`;
                             }
                         }
-                        return new vscode.Hover(hoverText);
+
+                        // Calculate the range for hover to only cover the matched GUID
+                        const start = line.indexOf(guid);
+                        const end = start + guid.length;
+                        const range = new vscode.Range(position.line, start, position.line, end);
+
+                        return new vscode.Hover(hoverText, range);
                     }
                 }
             }
@@ -51,6 +57,7 @@ function activate(context) {
             return null;
         }
     });
+
 
     // Create decoration type
     decorationType = vscode.window.createTextEditorDecorationType({
@@ -60,6 +67,14 @@ function activate(context) {
     // Register an event listener for when the active text editor changes
     vscode.window.onDidChangeActiveTextEditor(editor => {
         if (editor) {
+            updateDecorations(editor);
+        }
+    });
+
+    // Register an event listener for text document changes
+    vscode.workspace.onDidChangeTextDocument(event => {
+        const editor = vscode.window.activeTextEditor;
+        if (editor && event.document === editor.document) {
             updateDecorations(editor);
         }
     });
