@@ -14,21 +14,22 @@ function activate(context) {
     // Register hover provider
     let hoverProvider = vscode.languages.registerHoverProvider('*', {
         provideHover(document, position) {
-            // Get the entire line at the current position
+            // Get the line at the current position
             const line = document.lineAt(position.line).text;
-
+        
             // Cringe regex
             const guidMatch = line.match(/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/);
-
+        
             if (guidMatch) {
                 const guid = guidMatch[0];
-
+                const guidIndex = line.indexOf(guid); // Index of the GUID within the line
+        
                 if (guid) {
                     const info = index[guid];
-
+        
                     if (info) {
                         const preferredOrder = ['Name', 'LocalizedName', 'Description', 'TechnicalDescription', 'SlotName', 'Type', 'ResourceType'];
-
+        
                         let hoverText = '';
                         // Add fields in preferred order...
                         for (const field of preferredOrder) {
@@ -36,28 +37,27 @@ function activate(context) {
                                 hoverText += `**${field} :** ${info[field]}\n\n`;
                             }
                         }
-
+        
                         // Add any remaining fields not in the preferred order...
                         for (const field in info) {
                             if (!preferredOrder.includes(field) && info.hasOwnProperty(field) && info[field] !== "") {
                                 hoverText += `**${field} :** ${info[field]}\n\n`;
                             }
                         }
-
+        
                         // Calculate the range for hover to only cover the matched GUID
-                        const start = line.indexOf(guid);
-                        const end = start + guid.length;
-                        const range = new vscode.Range(position.line, start, position.line, end);
-
+                        const range = new vscode.Range(position.line, guidIndex, position.line, guidIndex + guid.length);
+        
                         return new vscode.Hover(hoverText, range);
                     }
                 }
             }
-
+        
             return null;
         }
     });
 
+    
 
     // Create decoration type
     decorationType = vscode.window.createTextEditorDecorationType({
