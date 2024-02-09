@@ -20,3 +20,7 @@
 
 - Now updates decorations as the document changes (not sure how bad it is for performance but it looks fine)
 - Reduced hover size to the GUID and not the whole line
+
+## [1.1.4] - 2024-02-09
+
+- Fixed hover range for real this time
